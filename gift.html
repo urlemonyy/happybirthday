@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎂 Happy Birthday Manda 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #fff6f9, #ffeef5, #ffe4ec, #ffd8f2);
+      overflow: hidden;
+    }
+
+    h2 {
+      color: #ff6b9c;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      animation: fadeIn 2s ease;
+      text-align: center;
+      white-space: pre-line;
+    }
+
+    .cake {
+      position: relative;
+      width: 220px;
+      height: 150px;
+      transform: perspective(800px) rotateX(10deg);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Piring */
+    .plate {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      height: 40px;
+      background: radial-gradient(circle at center, #fff 10%, #ddd 80%);
+      border-radius: 50%;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      z-index: 0;
+    }
+
+    /* Tubuh Kue */
+    .cake-body {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, #ff9aa2 0%, #ffb6c1 50%, #ffe4ec 100%);
+      border-radius: 10px;
+      box-shadow: inset 0 -5px 10px rgba(0,0,0,0.15),
+                  inset 0 8px 8px rgba(255,255,255,0.5),
+                  0 6px 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Lapisan krim */
+    .cake-body::before {
+      content: "";
+      position: absolute;
+      top: 25px;
+      width: 100%;
+      height: 20px;
+      background: radial-gradient(circle at 50% 50%, #fff4f8 0%, #ffe4e8 70%);
+      box-shadow: inset 0 3px 5px rgba(255,255,255,0.6);
+      border-top: 1px solid #ffd6de;
+    }
+
+    /* Lilin */
+    .candle {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 60px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #fff,
+        #fff 6px,
+        #ff6b6b 6px,
+        #ff6b6b 12px
+      );
+      border-radius: 5px;
+      box-shadow: 0 0 8px rgba(255, 200, 200, 0.5);
+      z-index: 2;
+    }
+
+    /* Api 3D */
+    .flame {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%) scale(1);
+      width: 26px;
+      height: 40px;
+      background: radial-gradient(ellipse at center,
+        rgba(255,255,150,0.9) 0%,
+        rgba(255,180,0,0.8) 50%,
+        rgba(255,80,0,0.6) 80%,
+        transparent 100%);
+      border-radius: 50% 50% 45% 45%;
+      filter: blur(1.5px);
+      animation: flameFlicker 0.25s infinite alternate;
+      box-shadow:
+        0 0 20px 10px rgba(255,200,80,0.4),
+        0 -5px 30px 10px rgba(255,150,0,0.3);
+    }
+
+    @keyframes flameFlicker {
+      0% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; filter: blur(1.2px); }
+      50% { transform: translateX(-50%) scale(1.15) rotate(-2deg); opacity: 0.95; filter: blur(1.8px); }
+      100% { transform: translateX(-50%) scale(1.05) rotate(2deg); opacity: 1; filter: blur(1.5px); }
+    }
+
+    /* Refleksi cahaya */
+    .light-glow {
+      position: absolute;
+      top: -10px;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background: radial-gradient(circle at 50% -10%, rgba(255,230,150,0.5), transparent 80%);
+      border-radius: 50%;
+      filter: blur(5px);
+      z-index: 1;
+    }
+
+    /* Tombol */
+    button {
+      background: #ff8fab;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 8px rgba(255,150,180,0.3);
+    }
+
+    button:hover {
+      background: #ff6b9c;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(255,100,140,0.4);
+    }
+
+    /* Balon */
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ff7eb3;
+      animation: floatUp 6s ease-in-out infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Ucapan */
+    .wish {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #ff4b77;
+      margin-top: 2.5rem;
+      display: none;
+      animation: popIn 1.2s ease forwards;
+      text-align: center;
+      line-height: 1.6;
+      white-space: pre-line;
+      text-shadow: 0 2px 4px rgba(255,150,200,0.3);
+    }
+
+    .back-home {
+      display: none;
+      background: #ffa2c2;
+      margin-top: 1.5rem;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 10px rgba(255,150,180,0.3);
+    }
+
+    .back-home:hover {
+      background: #ff6b9c;
+      transform: translateY(-2px);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cake" id="cake">
+    <div class="plate"></div>
+    <div class="cake-body">
+      <div class="light-glow"></div>
+    </div>
+    <div class="candle">
+      <div class="flame" id="flame"></div>
+    </div>
+  </div>
+
+  <button id="blowBtn">💨 Tiup Lilin</button>
+
+  <div class="wish" id="wish">
+    🎉 Selamat Ulang Tahun Manda Sayang 💕  
+    Astungkara panjang umur dan sehat selalu✨
+    I Love You to the moon and back! 🌙🚀
+  </div>
+
+  <button class="back-home" id="backHome" onclick="window.location.href='index.html'">
+    ⬅️ Back to Home
+  </button>
+
+  <script>
+    const flame = document.getElementById("flame");
+    const wish = document.getElementById("wish");
+    const blowBtn = document.getElementById("blowBtn");
+    const backHome = document.getElementById("backHome");
+
+    blowBtn.addEventListener("click", () => {
+      flame.style.transition = "opacity 0.6s ease";
+      flame.style.opacity = "0";
+      wish.style.display = "block";
+      blowBtn.style.display = "none";
+      backHome.style.display = "inline-block";
+      releaseBalloons();
+    });
+
+    function releaseBalloons() {
+      for (let i = 0; i < 25; i++) {
+        const balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = `${Math.random() * 100}vw`;
+        balloon.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
+        balloon.style.animationDuration = `${4 + Math.random() * 3}s`;
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 7000);
+      }
+    }
+  </script>
+</body>
+</html>
